@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Lic. Patricia Vargas Cancino – Salud Ocupacional para Empresas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Servicios de salud ocupacional para empresas: vigilancia médico ocupacional, exámenes de ingreso, periódicos y de retiro, programas preventivos, ergonomía y capacitaciones. Atención personalizada de la Lic. Patricia Vargas Cancino.">
+  <meta name="description" content="Salud ocupacional para empresas: exámenes médicos, vigilancia de la salud y programas preventivos con la Lic. Patricia Vargas Cancino.">
 
   <style>
     :root {
-      --primary: #0f4c81;
-      --primary-light: #e6f1fb;
-      --accent: #00a86b;
-      --dark: #111827;
-      --text: #4b5563;
-      --bg: #f3f4f6;
+      --primary: #003b71;       /* azul tipo Canelo */
+      --primary-dark: #012744;
+      --primary-soft: #0f4d8a;
+      --accent: #f0b24a;        /* dorado */
+      --accent-soft: #fde2b0;
+      --bg: #f4f6fb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+      --border-soft: #e5e7eb;
+      --whatsapp: #25d366;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
+      -webkit-font-smoothing: antialiased;
       line-height: 1.6;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     /* NAVBAR */
     header {
       position: sticky;
       top: 0;
-      z-index: 40;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
+      z-index: 20;
+      background: #ffffff;
       border-bottom: 1px solid #e5e7eb;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 0;
       gap: 1rem;
+      padding: 0.85rem 0;
     }
 
     .logo {
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--primary);
+      color: var(--primary-dark);
     }
 
     .logo span {
-      display: block;
       font-size: 0.8rem;
       font-weight: 400;
-      color: #6b7280;
+      color: var(--muted);
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
+      gap: 1.2rem;
       font-size: 0.9rem;
     }
 
     .nav-links a {
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .nav-links a:hover {
-      background: var(--primary-light);
       color: var(--primary);
     }
 
@@ -92,230 +97,243 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.35rem;
       border-radius: 999px;
-      padding: 0.6rem 1.4rem;
+      padding: 0.65rem 1.5rem;
       font-size: 0.9rem;
       font-weight: 600;
       border: none;
       cursor: pointer;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+      transition: 0.15s ease;
       white-space: nowrap;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 8px 16px rgba(15,76,129,0.35);
+      background: linear-gradient(135deg, #f7b955, #f0932b);
+      color: #111827;
+      box-shadow: 0 10px 25px rgba(240, 148, 43, 0.45);
     }
 
     .btn-primary:hover {
-      background: #0c406c;
+      filter: brightness(1.05);
       transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(15,76,129,0.4);
     }
 
     .btn-outline {
-      border: 1px solid var(--primary);
-      background: white;
-      color: var(--primary);
+      background: transparent;
+      border: 1px solid #d1d5db;
+      color: var(--primary-dark);
     }
 
     .btn-outline:hover {
-      background: var(--primary-light);
+      background: #f3f4f6;
     }
 
     /* HERO */
     .hero {
-      padding: 3rem 0 2.5rem;
-      background: radial-gradient(circle at top left,#edf5ff, #ffffff 40%, #f3f4f6 100%);
+      position: relative;
+      color: #ffffff;
+      background: #000;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("hero-empresa.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.9;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(0,59,113,0.96), rgba(0,59,113,0.75), rgba(0,0,0,0.8));
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 2.4rem;
       align-items: center;
     }
 
     .hero-kicker {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.4rem;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
     }
 
     .hero-title {
-      font-size: 2.15rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 0.6rem;
+      line-height: 1.25;
+      margin-bottom: 0.7rem;
     }
 
     .hero-title span {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .hero-subtitle {
-      font-size: 1rem;
-      max-width: 34rem;
-      color: #4b5563;
-      margin-bottom: 1rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: #e5f3ff;
-      color: #1f3c5e;
-      font-size: 0.75rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
+      font-size: 0.98rem;
+      max-width: 33rem;
+      color: #e5e7eb;
+      margin-bottom: 1.3rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 0.85rem;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .hero-note {
-      font-size: 0.86rem;
-      color: #6b7280;
+      font-size: 0.84rem;
+      color: #e5e7eb;
+      max-width: 30rem;
     }
 
     .hero-card {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 14px 32px rgba(15,23,42,0.18);
-      border: 1px solid #e5e7eb;
+      background: rgba(15,23,42,0.93);
+      border-radius: 1.4rem;
+      padding: 1.6rem;
+      border: 1px solid rgba(209,213,219,0.5);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.7);
     }
 
     .hero-card-title {
+      font-size: 1.06rem;
       font-weight: 600;
-      color: var(--dark);
       margin-bottom: 0.4rem;
     }
 
     .hero-card-sub {
-      font-size: 0.86rem;
-      color: #6b7280;
-      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
     }
 
     .hero-list {
       list-style: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       display: grid;
-      gap: 0.35rem;
-      margin-bottom: 0.9rem;
-      color: #4b5563;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+      color: #e5e7eb;
     }
 
     .hero-list li::before {
       content: "✓";
-      display: inline-block;
-      width: 1.1rem;
       color: var(--accent);
       font-weight: 700;
+      margin-right: 0.4rem;
     }
 
     .hero-card-footer {
       font-size: 0.8rem;
-      color: #9ca3af;
+      color: #d1d5db;
+      border-top: 1px dashed rgba(148,163,184,0.7);
+      padding-top: 0.7rem;
+      margin-top: 0.4rem;
     }
 
-    /* SECTIONS */
+    main {
+      background: #f4f6fb;
+    }
+
     section {
-      padding: 2.8rem 0;
+      padding: 3rem 0;
     }
 
     .section-header {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.7rem;
+      max-width: 42rem;
     }
 
     .section-title {
-      font-size: 1.55rem;
-      color: var(--dark);
-      margin-bottom: 0.3rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
     }
 
     .section-subtitle {
-      font-size: 0.95rem;
-      color: #6b7280;
-      max-width: 38rem;
+      font-size: 0.96rem;
+      color: var(--muted);
     }
 
     .grid {
       display: grid;
-      gap: 1.2rem;
+      gap: 1.3rem;
     }
 
     .grid-2 {
-      grid-template-columns: repeat(2,minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0,1fr));
     }
 
     .grid-3 {
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0,1fr));
     }
 
     .card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 10px 22px rgba(15,23,42,0.08);
-      border: 1px solid #e5e7eb;
+      background: var(--card-bg);
+      border-radius: 1.1rem;
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 16px 35px rgba(15,23,42,0.08);
     }
 
     .card h3 {
       font-size: 1rem;
       margin-bottom: 0.4rem;
-      color: var(--dark);
+      color: var(--primary-dark);
     }
 
     .card p {
-      font-size: 0.88rem;
-      color: #6b7280;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .service-img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 0.9rem;
+      margin-bottom: 0.7rem;
     }
 
     .pill {
       display: inline-block;
-      font-size: 0.72rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #4338ca;
-      margin-bottom: 0.35rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      color: var(--primary-soft);
+      background: #eef2ff;
+      margin-bottom: 0.4rem;
     }
 
     .list {
       list-style: none;
-      font-size: 0.86rem;
+      font-size: 0.83rem;
       display: grid;
       gap: 0.3rem;
-      margin-top: 0.3rem;
+      margin-top: 0.4rem;
+      color: var(--muted);
     }
 
     .list li::before {
@@ -323,110 +341,267 @@
       color: var(--accent);
       font-weight: 900;
       display: inline-block;
-      width: 0.9rem;
+      width: 0.8rem;
     }
 
     .highlight {
-      margin-top: 1.1rem;
-      padding: 0.8rem 1rem;
-      border-radius: 0.85rem;
-      border-left: 3px solid var(--primary);
-      background: var(--primary-light);
+      margin-top: 1.4rem;
+      padding: 1rem 1.1rem;
+      border-radius: 0.9rem;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
       font-size: 0.86rem;
-      color: #1f2933;
+      color: #075985;
+    }
+
+    /* POR QUÉ ELEGIRNOS */
+    .icon-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1.3rem;
+    }
+
+    .icon-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.1rem 1rem;
+      border: 1px solid var(--border-soft);
+      text-align: center;
+      box-shadow: 0 14px 30px rgba(15,23,42,0.06);
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      margin: 0 auto 0.6rem;
+      border: 2px solid var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary-soft);
+    }
+
+    .icon-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--primary-dark);
+    }
+
+    .icon-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* QUIÉN ES PATRICIA */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-photo {
+      width: 270px;
+      height: 270px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow: 0 18px 35px rgba(15,23,42,0.25);
+    }
+
+    .about-card {
+      background: #ffffff;
+      border-radius: 1.1rem;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.06);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-card strong {
+      color: var(--primary-dark);
     }
 
     /* TESTIMONIOS */
     .testi {
-      font-size: 0.9rem;
-      color: #4b5563;
+      font-size: 0.88rem;
+      color: var(--muted);
       margin-bottom: 0.5rem;
     }
 
     .testi-author {
       font-size: 0.8rem;
-      color: #6b7280;
-      font-weight: 500;
+      color: #374151;
+      font-weight: 600;
     }
 
     /* CONTACTO */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.6fr);
+      gap: 1.8rem;
+    }
+
     .contact-box {
-      background: white;
+      background: #ffffff;
       border-radius: 1rem;
-      padding: 1.2rem;
-      box-shadow: 0 12px 26px rgba(15,23,42,0.12);
-      border: 1px solid #e5e7eb;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.06);
       font-size: 0.9rem;
+      color: var(--muted);
     }
 
     .contact-row {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
     }
 
     .contact-label {
       font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary-soft);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.1rem;
     }
 
-    .contact-value {
+    .contact-value a {
       font-weight: 600;
-      color: var(--dark);
+      color: var(--primary-dark);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .fake-form {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.06);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .fake-form-row {
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .fake-label {
+      font-size: 0.78rem;
+      color: #4b5563;
+    }
+
+    .fake-input {
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.9rem;
+      background: #f9fafb;
+    }
+
+    .fake-textarea {
+      border-radius: 0.9rem;
+      border: 1px solid #d1d5db;
+      padding: 0.55rem 0.9rem;
+      background: #f9fafb;
+      min-height: 90px;
     }
 
     /* FOOTER */
     footer {
-      background: #020617;
+      padding: 2.2rem 0 2.5rem;
+      background: var(--primary-dark);
       color: #e5e7eb;
-      padding: 2.2rem 0 2.4rem;
-      margin-top: 2.4rem;
+      margin-top: 2rem;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: minmax(0,2.2fr) minmax(0,1.8fr);
-      gap: 1.4rem;
-      align-items: flex-start;
+      gap: 1.5rem;
     }
 
     .footer-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
     }
 
     .footer-note {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 0.8rem;
+      font-size: 0.86rem;
+      color: #d1d5db;
+      margin-bottom: 0.9rem;
     }
 
     .footer-small {
-      font-size: 0.75rem;
-      color: #6b7280;
+      font-size: 0.78rem;
+      color: #9ca3af;
     }
 
     .footer-contact {
-      font-size: 0.85rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.7;
     }
 
     .footer-contact a {
-      color: #e5e7eb;
+      color: #f9fafb;
       text-decoration: underline;
       text-decoration-thickness: 1px;
     }
 
+    /* WhatsApp bubble (simple) */
+    .wa-bubble {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: var(--whatsapp);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.6rem;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+      z-index: 40;
+    }
+
     /* RESPONSIVE */
-    @media (max-width: 880px) {
+    @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: minmax(0,1fr);
       }
-      .grid-3 {
-        grid-template-columns: repeat(2,minmax(0,1fr));
+
+      .hero-inner {
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
       }
-      .footer-grid {
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .icon-row,
+      .contact-grid,
+      .footer-grid,
+      .about-grid,
+      .grid-2 {
         grid-template-columns: minmax(0,1fr);
+      }
+
+      .about-photo {
+        width: 230px;
+        height: 230px;
       }
     }
 
@@ -436,17 +611,12 @@
         align-items: flex-start;
       }
 
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: minmax(0,1fr);
-      }
-
-      .hero {
-        padding-top: 2.2rem;
-      }
-
       .hero-title {
-        font-size: 1.7rem;
+        font-size: 1.85rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: minmax(0,1fr);
       }
     }
   </style>
@@ -466,8 +636,7 @@
           <a href="#servicios">Servicios</a>
           <a href="#porque">Por qué elegirnos</a>
           <a href="#patricia">Quién es Patricia</a>
-          <a href="#testimonios">Testimonios</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#contacto">Contáctenos</a>
         </nav>
       </div>
     </div>
@@ -477,62 +646,53 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-kicker">Salud ocupacional & vigilancia médica</div>
-          <h1 class="hero-title">
-            Cuidamos la salud de tus trabajadores, <span>ordenando tu sistema de salud ocupacional.</span>
-          </h1>
-          <p class="hero-subtitle">
-            La Lic. Patricia Vargas acompaña a tu empresa en la implementación y gestión de la salud ocupacional:
-            exámenes médico ocupacionales, vigilancia de la salud y programas preventivos alineados a la normativa vigente.
-          </p>
+      <div class="hero-inner">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-kicker">Vigilancia de la salud • Programas preventivos</div>
+            <h1 class="hero-title">
+              Salud ocupacional para tu empresa,
+              <span>con un acompañamiento cercano y humano.</span>
+            </h1>
+            <p class="hero-subtitle">
+              La Lic. Patricia Vargas Cancino ayuda a empresas a ordenar sus exámenes médico ocupacionales,
+              vigilar la salud de sus colaboradores y cumplir la normativa sin procesos complicados.
+            </p>
 
-          <div class="hero-badges">
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Exámenes de ingreso, periódicos y de retiro
+            <div class="hero-actions">
+              <a class="btn btn-primary"
+                 href="https://wa.me/51939379337?text=Hola%20Licenciada%20Patricia,%20quisiera%20informaci%C3%B3n%20sobre%20salud%20ocupacional%20para%20mi%20empresa.">
+                📲 Agendar una llamada por WhatsApp
+              </a>
+              <a class="btn btn-outline" href="#servicios">
+                Ver servicios para empresas
+              </a>
             </div>
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Programas adaptados al riesgo del puesto
-            </div>
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Reportes claros para RR.HH. y SST
+
+            <div class="hero-note">
+              Atención a empresas de servicios, comercio y educación. Modalidad en consultorio y/o en las
+              instalaciones del cliente, según la necesidad de la empresa.
             </div>
           </div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary"
-               href="https://wa.me/51939379337?text=Hola%20Licenciada%20Patricia,%20quisiera%20informaci%C3%B3n%20sobre%20salud%20ocupacional%20para%20mi%20empresa.">
-              Solicitar una asesoría por WhatsApp
-            </a>
-            <a class="btn btn-outline" href="#servicios">
-              Ver servicios para empresas
-            </a>
-          </div>
-
-          <div class="hero-note">
-            Atención a empresas de servicios, comercio e industria ligera. Modalidad en consultorio y/o en las instalaciones del cliente.
-          </div>
+          <aside class="hero-card">
+            <div class="hero-card-title">Diagnóstico inicial de salud ocupacional</div>
+            <div class="hero-card-sub">
+              Un primer análisis para conocer cómo está tu empresa hoy y qué se necesita para estar al día
+              con la vigilancia de la salud de tus colaboradores.
+            </div>
+            <ul class="hero-list">
+              <li>Revisión de estado actual de exámenes médicos.</li>
+              <li>Identificación de brechas frente a la normativa.</li>
+              <li>Propuesta de plan anual de vigilancia de la salud.</li>
+              <li>Recomendaciones claras para RR.HH. y SST.</li>
+            </ul>
+            <div class="hero-card-footer">
+              Envíanos por WhatsApp el rubro de tu empresa, número de trabajadores y si actualmente realizan
+              exámenes ocupacionales. Recibirás una propuesta ajustada a tu realidad.
+            </div>
+          </aside>
         </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-title">Paquete inicial de salud ocupacional</div>
-          <div class="hero-card-sub">
-            Ideal para empresas que necesitan ordenar su vigilancia médico ocupacional y cumplir con la normativa sin complicaciones.
-          </div>
-          <ul class="hero-list">
-            <li>Diagnóstico de la situación actual de salud ocupacional.</li>
-            <li>Plan anual de vigilancia de la salud según riesgos.</li>
-            <li>Exámenes de ingreso, periódicos y de retiro.</li>
-            <li>Informe ejecutivo para gerencia y RR.HH.</li>
-          </ul>
-          <div class="hero-card-footer">
-            Escribe por WhatsApp para coordinar una primera conversación sin costo sobre la realidad de tu empresa.
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -542,94 +702,59 @@
         <div class="section-header">
           <h2 class="section-title">Servicios de salud ocupacional para tu empresa</h2>
           <p class="section-subtitle">
-            Diseñamos y ejecutamos programas de vigilancia médico ocupacional que protegen a tus trabajadores y
-            dan soporte técnico a tu área de Recursos Humanos y Seguridad y Salud en el Trabajo.
+            Programas diseñados para que tu organización cumpla la normativa y, al mismo tiempo, cuide la salud
+            de sus trabajadores con acciones preventivas y seguimiento médico.
           </p>
         </div>
 
         <div class="grid grid-3">
           <div class="card">
-            <div class="pill">Exámenes médico ocupacionales</div>
-            <h3>Ingreso, periódico y retiro</h3>
+            <img src="servicio1.jpg" alt="Exámenes médico ocupacionales" class="service-img">
+            <div class="pill">Evaluaciones médicas</div>
+            <h3>Exámenes de ingreso, periódicos y de retiro</h3>
             <p>
-              Evaluaciones médicas enfocadas en el puesto y sus riesgos, con conclusiones claras de aptitud laboral.
+              Evaluaciones médico ocupacionales enfocadas en los riesgos del puesto, con conclusiones claras
+              para la toma de decisiones.
             </p>
             <ul class="list">
-              <li>Historia clínica ocupacional.</li>
-              <li>Examen físico y pruebas según riesgo.</li>
+              <li>Historia clínica ocupacional completa.</li>
+              <li>Examen físico y pruebas según exposición.</li>
               <li>Conclusión de apto / apto con restricciones.</li>
             </ul>
           </div>
 
           <div class="card">
+            <img src="servicio2.jpg" alt="Vigilancia médico ocupacional" class="service-img">
             <div class="pill">Vigilancia de la salud</div>
             <h3>Seguimiento de trabajadores expuestos</h3>
             <p>
-              Monitoreo periódico de trabajadores expuestos a riesgos físicos, ergonómicos o psicosociales.
+              Control periódico de trabajadores que realizan labores con riesgos físicos, ergonómicos o psicosociales.
             </p>
             <ul class="list">
-              <li>Identificación temprana de alteraciones.</li>
+              <li>Detección temprana de alteraciones de salud.</li>
               <li>Recomendaciones y restricciones laborales.</li>
-              <li>Informes para el Comité de SST.</li>
+              <li>Informes para Comité de SST y gerencia.</li>
             </ul>
           </div>
 
           <div class="card">
+            <img src="servicio3.jpg" alt="Capacitación y prevención" class="service-img">
             <div class="pill">Programas preventivos</div>
-            <h3>Promoción de la salud en el trabajo</h3>
+            <h3>Promoción de la salud y capacitación</h3>
             <p>
-              Programas diseñados para mejorar el bienestar y reducir el ausentismo por causas prevenibles.
+              Acciones orientadas a reducir ausentismo y mejorar la calidad de vida laboral de tu equipo.
             </p>
             <ul class="list">
-              <li>Campañas de estilos de vida saludables.</li>
-              <li>Prevención de enfermedades crónicas.</li>
-              <li>Programas de salud mental y manejo del estrés.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">Ergonomía</div>
-            <h3>Evaluación de puestos y trabajo frente a pantallas</h3>
-            <p>
-              Evaluaciones ergonómicas para trabajadores administrativos y operativos que ayudan a prevenir lesiones músculo-esqueléticas.
-            </p>
-            <ul class="list">
-              <li>Recomendaciones para adecuación de puestos.</li>
-              <li>Pausas activas y educación postural.</li>
-              <li>Informe técnico para RR.HH. y SST.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">Capacitaciones</div>
-            <h3>Formación para colaboradores y jefaturas</h3>
-            <p>
-              Charlas y talleres adaptados a la realidad de tu empresa, con lenguaje sencillo y enfoque práctico.
-            </p>
-            <ul class="list">
-              <li>Salud ocupacional y autocuidado.</li>
-              <li>Estrés, sueño y salud mental.</li>
-              <li>Prevención de riesgos y uso de EPP.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="pill">Soporte a RR.HH. y SST</div>
-            <h3>Acompañamiento continuo</h3>
-            <p>
-              Asesoría médica para que el área de Recursos Humanos gestione la salud ocupacional con respaldo técnico.
-            </p>
-            <ul class="list">
-              <li>Revisión de protocolos y formatos médicos.</li>
-              <li>Apoyo en auditorías e inspecciones.</li>
-              <li>Orientación en casos clínicos complejos.</li>
+              <li>Charlas de salud ocupacional y autocuidado.</li>
+              <li>Prevención de estrés y fatiga laboral.</li>
+              <li>Recomendaciones ergonómicas y pausas activas.</li>
             </ul>
           </div>
         </div>
 
         <div class="highlight">
-          ¿Tu empresa aún no tiene un plan claro de vigilancia médico ocupacional? Podemos empezar con un diagnóstico
-          y un plan anual sencillo, ajustado a tu número de trabajadores y nivel de riesgo.
+          Si tu empresa aún no tiene un sistema ordenado de salud ocupacional, podemos empezar con un esquema básico:
+          número de trabajadores, principales riesgos y pasos concretos para ponerse al día.
         </div>
       </div>
     </section>
@@ -638,36 +763,42 @@
     <section id="porque">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">¿Por qué trabajar con la Lic. Patricia Vargas?</h2>
+          <h2 class="section-title">¿Por qué elegir a la Lic. Patricia Vargas?</h2>
           <p class="section-subtitle">
-            La combinación de experiencia clínica, enfoque humano y comunicación directa con RR.HH. convierte a Patricia
-            en una aliada para ordenar y sostener la salud ocupacional de tu empresa.
+            Un acompañamiento pensado para empresas que desean cumplir con la normativa, pero también cuidar
+            a sus trabajadores con un trato cercano y ético.
           </p>
         </div>
 
-        <div class="grid grid-4 grid-2">
-          <div class="card">
-            <h3>Enfoque humano y cercano</h3>
+        <div class="icon-row">
+          <div class="icon-card">
+            <div class="icon-circle">★</div>
+            <h3>Atención personalizada</h3>
             <p>
-              El trato con los trabajadores es claro y respetuoso, facilitando la comprensión de los resultados y las recomendaciones médicas.
+              Comunicación directa con RR.HH. y SST para resolver dudas, revisar informes y acordar acciones
+              concretas de mejora.
             </p>
           </div>
-          <div class="card">
-            <h3>Lenguaje sencillo para la empresa</h3>
+          <div class="icon-card">
+            <div class="icon-circle">📄</div>
+            <h3>Informes claros</h3>
             <p>
-              Informes y conclusiones en un lenguaje entendible para gerencia, RR.HH. y Comité de SST, sin tecnicismos innecesarios.
+              Conclusiones médicas explicadas en lenguaje sencillo, facilitando la toma de decisiones laborales
+              responsables.
             </p>
           </div>
-          <div class="card">
-            <h3>Flexibilidad y adaptación</h3>
+          <div class="icon-card">
+            <div class="icon-circle">⏱</div>
+            <h3>Agilidad y compromiso</h3>
             <p>
-              Atención en consultorio o en las instalaciones del cliente, con planes adaptados al tamaño y giro de la empresa.
+              Respuesta oportuna ante requerimientos, auditorías o inspecciones vinculadas a salud ocupacional.
             </p>
           </div>
-          <div class="card">
-            <h3>Confidencialidad y ética</h3>
+          <div class="icon-card">
+            <div class="icon-circle">🔒</div>
+            <h3>Ética y confidencialidad</h3>
             <p>
-              La información médica se maneja con estricta reserva, respetando la privacidad de cada trabajador y los estándares profesionales.
+              Manejo responsable de la información de salud de cada trabajador, respetando su privacidad y dignidad.
             </p>
           </div>
         </div>
@@ -680,30 +811,28 @@
         <div class="section-header">
           <h2 class="section-title">Quién es la Lic. Patricia Vargas Cancino</h2>
           <p class="section-subtitle">
-            Profesional de salud enfocada en la prevención, la vigilancia médico ocupacional y el acompañamiento cercano
-            a empresas que desean cuidar a su gente y cumplir la normativa.
+            Profesional de salud con experiencia en vigilancia médica, evaluación de riesgos y programas preventivos
+            orientados a empresas de distintos rubros.
           </p>
         </div>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Perfil profesional</h3>
-            <p>
-              La Lic. Patricia Vargas Cancino cuenta con experiencia en programas de salud ocupacional para empresas de
-              servicios, comercio y educación, apoyando tanto a trabajadores como a equipos de Recursos Humanos y Seguridad y Salud en el Trabajo.
-            </p>
-            <p style="font-size:0.88rem; margin-top:0.4rem;">
-              Su enfoque se basa en la prevención, la educación en salud y la construcción de ambientes laborales más saludables y productivos.
-            </p>
+        <div class="about-grid">
+          <div class="about-photo-wrap">
+            <img src="patricia.jpg" alt="Lic. Patricia Vargas Cancino" class="about-photo">
           </div>
-          <div class="card">
-            <h3>Lo que ofrece a tu empresa</h3>
-            <ul class="list">
-              <li>Orden en la documentación de salud ocupacional.</li>
-              <li>Evaluaciones médicas alineadas a los riesgos reales del puesto.</li>
-              <li>Comunicación permanente con RR.HH. y gerencia.</li>
-              <li>Acompañamiento en la toma de decisiones médicas y laborales.</li>
-            </ul>
+          <div class="about-card">
+            <p>
+              <strong>La Lic. Patricia Vargas Cancino</strong> acompaña a empresas que buscan fortalecer su salud ocupacional,
+              trabajando de la mano con los equipos de Recursos Humanos y Seguridad y Salud en el Trabajo.
+            </p>
+            <p style="margin-top:0.5rem;">
+              Su enfoque integra prevención, educación en salud y una gestión ordenada de la información médica, para que
+              las decisiones relacionadas a los colaboradores se tomen con evidencia y criterio humano.
+            </p>
+            <p style="margin-top:0.5rem;">
+              Además de las evaluaciones médicas, Patricia pone énfasis en la comunicación con los trabajadores, explicando
+              los hallazgos y recomendaciones de forma respetuosa y clara, generando confianza en el proceso.
+            </p>
           </div>
         </div>
       </div>
@@ -713,27 +842,27 @@
     <section id="testimonios">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Empresas que valoran el acompañamiento médico</h2>
+          <h2 class="section-title">Lo que valoran las empresas que la eligen</h2>
           <p class="section-subtitle">
-            Algunos comentarios frecuentes de clientes que priorizan la salud de sus equipos y trabajan de la mano
-            con un profesional en salud ocupacional.
+            Comentarios frecuentes de responsables de RR.HH. y SST que priorizan la salud de sus equipos y buscan
+            respaldo médico confiable.
           </p>
         </div>
 
         <div class="grid grid-2">
           <div class="card">
             <p class="testi">
-              “Logramos ordenar nuestros exámenes médico ocupacionales y tener claridad sobre las restricciones
-              y recomendaciones para cada puesto. Hoy tomamos decisiones de forma más segura y con respaldo médico.”
+              “Pasamos de tener exámenes ocupacionales dispersos a un sistema ordenado y con reportes claros.
+              Hoy sabemos qué trabajadores requieren seguimiento y qué acciones debemos priorizar.”
             </p>
             <div class="testi-author">
-              Responsable de RR.HH. – Empresa de servicios
+              Responsable de Recursos Humanos – Empresa de servicios
             </div>
           </div>
           <div class="card">
             <p class="testi">
-              “Las capacitaciones ayudaron a nuestro equipo a entender mejor la importancia de la salud ocupacional.
-              Ahora vemos mayor compromiso con las recomendaciones y menor resistencia a los controles.”
+              “Las capacitaciones y el trato cercano con los colaboradores hicieron que vean los exámenes médicos
+              como un beneficio, no solo como un requisito.”
             </p>
             <div class="testi-author">
               Jefatura de SST – Empresa comercial
@@ -747,27 +876,14 @@
     <section id="contacto">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Agenda una conversación para tu empresa</h2>
+          <h2 class="section-title">¿Listo para dar el siguiente paso en salud ocupacional?</h2>
           <p class="section-subtitle">
-            Cuéntanos brevemente el rubro de tu empresa, el número de trabajadores y qué necesitas mejorar en salud ocupacional.
-            Con esa información la Lic. Patricia podrá proponerte alternativas concretas.
+            Envía un mensaje con algunos datos básicos de tu empresa y coordinaremos una reunión virtual
+            o presencial para revisar tu caso.
           </p>
         </div>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Información sugerida para tu mensaje</h3>
-            <ul class="list">
-              <li>Nombre de la empresa y giro.</li>
-              <li>Número aproximado de trabajadores.</li>
-              <li>Si ya realizan exámenes médico ocupacionales o recién van a implementarlos.</li>
-              <li>Si tienen inspecciones o auditorías próximas.</li>
-            </ul>
-            <div class="highlight">
-              Envía estos datos por WhatsApp o correo y recibirás una respuesta personalizada con propuestas acordes a tu realidad.
-            </div>
-          </div>
-
+        <div class="contact-grid">
           <div class="contact-box">
             <div class="contact-row">
               <div class="contact-label">WhatsApp</div>
@@ -783,14 +899,46 @@
                 <a href="mailto:pe.vargascancino@gmail.com">pe.vargascancino@gmail.com</a>
               </div>
             </div>
-            <div class="contact-row" style="margin-top:0.8rem;">
+            <div class="contact-row">
+              <div class="contact-label">¿Qué información ayuda a empezar?</div>
+              <ul class="list">
+                <li>Nombre y rubro de la empresa.</li>
+                <li>Número aproximado de trabajadores.</li>
+                <li>Si hoy realizan o no exámenes ocupacionales.</li>
+                <li>Si tienen auditorías o inspecciones próximas.</li>
+              </ul>
+            </div>
+            <div style="margin-top:0.7rem;">
               <a class="btn btn-primary"
                  href="https://wa.me/51939379337?text=Hola%20Licenciada%20Patricia,%20quisiera%20informaci%C3%B3n%20sobre%20salud%20ocupacional%20para%20mi%20empresa.">
-                Escribir por WhatsApp ahora
+                📲 Escribir por WhatsApp ahora
               </a>
             </div>
-            <div class="contact-row" style="margin-top:0.6rem; font-size:0.8rem; color:#6b7280;">
-              También puedes enviar un correo con tus datos y horarios sugeridos para coordinar una reunión virtual o presencial.
+          </div>
+
+          <div class="fake-form">
+            <div style="font-weight:600; color:var(--primary-dark); margin-bottom:0.8rem;">
+              También puedes copiar estos datos y pegarlos en tu mensaje:
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-label">Nombre de la empresa</div>
+              <div class="fake-input">_______________________________________</div>
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-label">Rubro</div>
+              <div class="fake-input">_______________________________________</div>
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-label">Número aproximado de trabajadores</div>
+              <div class="fake-input">_______________________________________</div>
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-label">Comentario o necesidad principal</div>
+              <div class="fake-textarea">____________________________________________________</div>
+            </div>
+            <div style="font-size:0.8rem; color:var(--muted); margin-top:0.4rem;">
+              Completa esta información y envíala por WhatsApp o correo. Servirá como base para la reunión
+              con la Lic. Patricia.
             </div>
           </div>
         </div>
@@ -805,21 +953,32 @@
       <div>
         <div class="footer-title">Lic. Patricia Vargas Cancino</div>
         <div class="footer-note">
-          Salud Ocupacional para Empresas – Vigilancia médico ocupacional y programas preventivos.
+          Salud ocupacional para empresas – Vigilancia médico ocupacional, programas preventivos y acompañamiento
+          a los equipos de Recursos Humanos y Seguridad y Salud en el Trabajo.
         </div>
         <div class="footer-small">
-          Esta página tiene fines informativos. La información médica de trabajadores se maneja bajo absoluta confidencialidad
-          y conforme a la ética profesional.
+          Esta página tiene fines informativos. La información de salud de los trabajadores se maneja con estricta
+          confidencialidad y según los principios éticos y legales vigentes.
         </div>
       </div>
       <div class="footer-contact">
         <strong>Contacto directo</strong><br>
-        WhatsApp: <a href="https://wa.me/51939379337">+51 939 379 337</a><br>
-        Correo: <a href="mailto:pe.vargascancino@gmail.com">pe.vargascancino@gmail.com</a><br><br>
-        <span style="color:#9ca3af;">Atención a empresas de Lima y otras ciudades previa coordinación.</span>
+        WhatsApp:
+        <a href="https://wa.me/51939379337">+51 939 379 337</a><br>
+        Correo:
+        <a href="mailto:pe.vargascancino@gmail.com">pe.vargascancino@gmail.com</a><br><br>
+        <span style="color:#d1d5db;">
+          Atención a empresas de Lima y otras ciudades del país, previa coordinación.
+        </span>
       </div>
     </div>
   </footer>
+
+  <!-- Burbuja de WhatsApp -->
+  <a class="wa-bubble"
+     href="https://wa.me/51939379337?text=Hola%20Licenciada%20Patricia,%20quisiera%20informaci%C3%B3n%20sobre%20salud%20ocupacional%20para%20mi%20empresa.">
+    ☎
+  </a>
 
 </body>
 </html>
